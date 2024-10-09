@@ -1,0 +1,157 @@
+#include <stdio.h>
+#define MAX 100
+void nhapsl(int &n)
+{
+	do{
+		printf ("Nhap so phan tu 0 < sl < 100: ");
+		scanf ("%d", &n);
+		
+	}while  (n <=0 || n> 100);
+}
+void  nhapmang ( int a[],int n)
+{
+	for (int i =0; i < n; i++)
+	{
+		printf ("a[%d]=", i);
+		scanf ("%d", &a[i]);
+	}
+}
+void xuatmang (int a [], int n)
+{
+	printf("\nMnag gom cac phan tu:\n ");
+	for (int i=0; i< n;i ++)
+	printf("%5d", a[i]);
+}
+// -----------Cau 2:a---------------
+void ptchia3 (int a [], int n)
+{
+printf ("\nPhan tu chia het cho 3:\n");
+for (int i=0; i<n; i++)
+if (a[i] %3 ==0)
+printf ("%d  ", a[i]);
+}
+//------------Cau 2:b---------------
+void slsoduong (int a [], int n)
+{
+	printf ("\nDem so luong so duong:\n");
+	for (int i=0; i<n; i ++)
+	if (a[i] >= 0)
+	printf ("%d   ", a[i]);
+}
+//------------Cau 2:c---------------
+void tinhtong (int a [], int n)
+{
+	int s=0;
+	printf ("\nTinh tong cac so trong mang:\n");
+	for (int i =0;i<n;i++ )
+	
+	s += a[i];
+	printf ("%d    ", s);
+	
+}
+//------------Cau 2: d--------------
+void trungbinhcong (int a [], int n)
+{
+	int tong = 0;
+	printf ("\nTrung binh cong:\n");
+	for ( int i = 0;i < n; i++)
+	
+		tong += a[i];
+	
+	float trungbinh = (float)tong/ n;
+	printf ("%f", trungbinh);
+}
+//-------------Cau 2: e-------------
+void trungbinhcongduong (int a [], int n)
+{
+	int tong = 0;
+	printf ("\nTrung binh cong phan tu duong:\n");
+	for ( int i = 0;i < n; i++)
+	if (a[i]>0){
+	
+		tong += a[i];
+}
+	float trungbinh = (float)tong/ n;
+	printf ("%f", trungbinh);
+}
+//------------Cau 2: f--------------
+int  kiemtrasonguyento (int num)
+{
+	if (num <2)return 0;
+	for (int i =2; i*i <=num; i++)
+	{
+		if (num %i ==0 )return 0;
+	}
+	return 1;
+}
+void xuatsonguyento(int a[], int n)
+{
+	printf("\nCac so nguyen to: ");
+	for (int i =0; i< n; i ++)
+	{
+		if (kiemtrasonguyento(a[i])){
+			printf("%d", a[i]);
+		}
+	}
+	printf ("\n");
+}
+//-------------Cau 2: g----------------
+int demsonguyento(int a[], int n)
+{
+	int count =0;
+	for (int i=0; i<n; i++)
+	{
+		if(kiemtrasonguyento(a[i]))
+		{
+			count ++;
+		}
+	}
+	return count;
+}
+//-------------Cau 2: h-----------------
+int tinhtongsonguyento(int a[], int n)
+{
+	int tong =0;
+	for (int i=0; i< n; i++)
+	{
+		if(kiemtrasonguyento(a[i]))
+		{
+			tong +=a[i];
+		}
+	}
+	return tong;
+}
+//----------------- Cau 2: i-------------------
+void timphantuduongdautien(int a[], int n)
+{
+	for (int i = 0; i <n; i ++)
+	{
+		if (a[i]>0)
+		{
+			printf("\nPhan tu duong dau tien: %d", a[i]);
+			return;
+		}
+	}
+	printf ("Mang khong co so duong nao\n");
+}
+
+
+
+
+
+int main(){
+	int a[MAX], n;
+	nhapsl (n);
+	nhapmang(a, n);
+	xuatmang(a, n);
+	ptchia3(a, n);
+	slsoduong(a, n);
+	tinhtong(a, n);
+	trungbinhcong(a, n);
+	trungbinhcongduong(a, n);
+	xuatsonguyento(a, n);
+	printf ("Dem so nguyen to: %d ",demsonguyento(a, n));
+	printf ("Tong so nguyen to: %d ",tinhtongsonguyento(a, n));
+	timphantuduongdautien(a, n);
+	return 0;
+}
